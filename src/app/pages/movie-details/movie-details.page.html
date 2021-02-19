@@ -1,9 +1,29 @@
-<ion-header>
+<ion-header *ngIf="information">
   <ion-toolbar>
-    <ion-title>movieDetails</ion-title>
+    <ion-title>{{ information.Title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+  <ion-card *ngIf="information" class="card">
+    <ion-card-header>
+      <ion-card-content>
+        <p>{{ information.Released }}</p>
+        <p>{{ information.Language }}</p>
+      </ion-card-content>
+      <ion-card-content>
+        {{information.Plot}}
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
+    </ion-col>
+  <ion-col *ngIf="information" size="auto">
+    <img [src]="information.Poster" class="poster">
+  </ion-col>
+</ion-row>
+</ion-grid>
 
 </ion-content>
