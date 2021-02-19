@@ -9,7 +9,7 @@ import { MovieService } from 'src/app/service/movie.service';
 })
 export class MoviesPage implements OnInit {
 
-  results: [] = [];
+  results: Observable<any>;
   search: string = '';
 
   constructor(private movieService: MovieService) { }
@@ -18,13 +18,7 @@ export class MoviesPage implements OnInit {
   }
 
   searchChanged() {
-    console.log('search: ', this.search)
-    this.movieService.searchData(this.search).subscribe((res) => {
-      console.log('searchChanged: ', res);
-      this.results = res;
-    });
-
-    console.log('results: ', this.results);
+    this.results = this.movieService.searchData(this.search);
 
   }
 

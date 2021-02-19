@@ -9,7 +9,7 @@
   <ion-searchbar [(ngModel)]="search" (ionChange)="searchChanged($event)"></ion-searchbar>
 
   <ion-list>
-    <ion-item *ngFor="let item of (results)" [routerLink] = "['/', 'movie', item.imdbID]">
+    <ion-item *ngFor="let item of (results | async)" [routerLink] = "['/', 'movie', item.imdbID]">
       {{ item.Title }}
     </ion-item>
   </ion-list>

@@ -16,10 +16,7 @@ export class MovieService {
   searchData(title: string): Observable<any> {
     return this.http.get(`${this.link}?s=${encodeURI(title)}&apikey=${this.key}`)
     .pipe(
-      map((results: any) => {
-        console.log('res ', results.Search);
-        return results.Search
-      })
+      map( results => results['Search'])
     );
   }
 
