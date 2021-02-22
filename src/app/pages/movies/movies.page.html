@@ -8,10 +8,15 @@
 
   <ion-searchbar [(ngModel)]="search" (ionChange)="searchChanged($event)" animated="true"></ion-searchbar>
 
-  <ion-list>
+  <ion-list *ngIf="results; else elseBlock">
     <ion-item button *ngFor="let item of (results | async)" [routerLink] = "['/', 'movies', item.imdbID]">
       {{ item.Title }}
     </ion-item>
   </ion-list>
+  <ng-template #elseBlock class="vacio">
+    <div>
+      Inicia una búsqueda para conseguir resultados
+    </div>
+  </ng-template>
 
 </ion-content>
